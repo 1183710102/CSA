@@ -233,52 +233,52 @@ int main()
         //建立g(j)新加的后缀的值
         Start = timeGetTime();
         int g[l+1];
-////        cout << "g" << endl;
-//        Ti.clear();
-//        int sa = l;//该组中最后一个字符的位置0-l
-//        for(int i=basic;i>basic-l;i--){
-//            s.insert(s.begin(),whole_gene[i]);
-////            cout << s << endl;
-//            Ti.push_back(make_pair(sa,s));
-//            sa--;
-//        }
-////        cout << Ti.capacity()<<endl;
-//        //cout << sa;
-//        sort(Ti.begin(),Ti.end(),compare);//排的是原来本组新加的l个后缀
-//        for(int k=1;k<=l;k++){
-//            g[Ti[k-1].first] = order[Ti[k-1].first-1] + k;
-//        }
-////        for(int x=1;x<=l;x++){
-////            cout << g[x] << " ";
-////        }
-////        cout << endl;
-
-        for(int k=1;k<=l;k++){
-            //计算第k个后缀在该组中的排名
-            int r = order_num[order[k-1]];
-            for(int x=0;x<l;x++){
-//                if(order[x]<order[k-1]){
-//                    r++;
-//                    continue;
-//                }
-                if(order[x]==order[k-1]){
-                    //x和K直接比对
-                    int minsize = l-max(x,k-1)+T_size;
-                    int x_start = basic-l+x+1;
-                    int k_start = basic-l+k;
-                    for(int y=0;y<minsize;y++){
-                        if(whole_gene[x_start+y]<whole_gene[k_start+y]){
-                            r++;
-                            break;
-                        }
-                        else if(whole_gene[x_start+y]>whole_gene[k_start+y])
-                            break;
-                    }
-                }
-            }
-            Ti[r]=make_pair(k,NULL);
-            g[k] = order[k-1] + r + 1;//1是加上自己
+//        cout << "g" << endl;
+        Ti.clear();
+        int sa = l;//该组中最后一个字符的位置0-l
+        for(int i=basic;i>basic-l;i--){
+            s.insert(s.begin(),whole_gene[i]);
+//            cout << s << endl;
+            Ti.push_back(make_pair(sa,s));
+            sa--;
         }
+//        cout << Ti.capacity()<<endl;
+        //cout << sa;
+        sort(Ti.begin(),Ti.end(),compare);//排的是原来本组新加的l个后缀
+        for(int k=1;k<=l;k++){
+            g[Ti[k-1].first] = order[Ti[k-1].first-1] + k;
+        }
+//        for(int x=1;x<=l;x++){
+//            cout << g[x] << " ";
+//        }
+//        cout << endl;
+
+//        for(int k=1;k<=l;k++){
+//            //计算第k个后缀在该组中的排名
+//            int r = order_num[order[k-1]];
+//            for(int x=0;x<l;x++){
+////                if(order[x]<order[k-1]){
+////                    r++;
+////                    continue;
+////                }
+//                if(order[x]==order[k-1]){
+//                    //x和K直接比对
+//                    int minsize = l-max(x,k-1)+T_size;
+//                    int x_start = basic-l+x+1;
+//                    int k_start = basic-l+k;
+//                    for(int y=0;y<minsize;y++){
+//                        if(whole_gene[x_start+y]<whole_gene[k_start+y]){
+//                            r++;
+//                            break;
+//                        }
+//                        else if(whole_gene[x_start+y]>whole_gene[k_start+y])
+//                            break;
+//                    }
+//                }
+//            }
+//            Ti[r]=make_pair(k,NULL);
+//            g[k] = order[k-1] + r + 1;//1是加上自己
+//        }
 
         End = timeGetTime();
         cout << "g time: " << End-Start << endl;
