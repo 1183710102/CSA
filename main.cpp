@@ -434,7 +434,4 @@ bool compare(pair<int,string> p1, pair<int,string> p2){
 	return s1+s2 < s2+s1;
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> a1ca03d1d0417256817587096b6c02a1d8b6b23e
